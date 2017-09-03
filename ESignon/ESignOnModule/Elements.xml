@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <CustomAction
+  Id="CustomRibbonTab"
+  Location="CommandUI.Ribbon"
+  RegistrationId="100"
+  RegistrationType="List">
+
+    <CommandUIExtension xmlns="http://schemas.microsoft.com/sharepoint/">
+      <CommandUIDefinitions>
+        <CommandUIDefinition Location="Ribbon.Tabs._children">
+          <Tab Id="My Custom Tab" Title="ESignOn Tab" Description="My Custom Tab" Sequence="0">
+            <Scaling Id="My Custom Tab.Scaling">
+              <MaxSize Id="My Group.Scaling.MaxSize" GroupId="My Group" Size="LargeLarge" />
+              <Scale Id="My Group.Scaling.Scale" GroupId="My Group" Size="LargeLarge" />
+            </Scaling>
+            <Groups Id="My Custom Tab.Groups">
+              <Group Id="My Group" Title="ESignOn" Template="Ribbon.Templates.Flexible2" Command="My Group.Command">
+                <Controls Id="My Group.Controls">
+                  <Button Id="My Button" LabelText="Document Submission" Image16by16="/_layouts/15/1033/images/formatmap16x16.png?rev=33" Image16by16Left="-263" Image16by16Top="-2" Image32by32="/_layouts/15/1033/images/formatmap32x32.png?rev=33" Image32by32Left="-510" Image32by32Top="-0" Command="My Button.Command" TemplateAlias="o1" />
+                  <Button Id="My History" LabelText="History Log" Image16by16="/_layouts/15/1033/images/formatmap16x16.png?rev=33" Image16by16Left="-263" Image16by16Top="-2" Image32by32="/_layouts/15/1033/images/formatmap32x32.png?rev=33" Image32by32Left="-510" Image32by32Top="-0" Command="My History.Command" TemplateAlias="o1" />
+                </Controls>
+              </Group>
+            </Groups>
+          </Tab>
+        </CommandUIDefinition>
+        <CommandUIDefinition Location="Ribbon.Templates._children">
+          <GroupTemplate Id="Ribbon.Templates.Flexible2">
+            <Layout Title="LargeLarge" LayoutTitle="LargeLarge">
+              <OverflowSection DisplayMode="Large" TemplateAlias="o1" Type="OneRow" />
+              <OverflowSection DisplayMode="Large" TemplateAlias="o2" Type="OneRow" />
+            </Layout>
+            <Layout Title="LargeMedium" LayoutTitle="LargeMedium">
+              <OverflowSection DisplayMode="Large" TemplateAlias="o1" Type="OneRow" />
+              <OverflowSection DisplayMode="Medium" TemplateAlias="o2" Type="ThreeRow" />
+            </Layout>
+            <Layout Title="LargeSmall" LayoutTitle="LargeSmall">
+              <OverflowSection DisplayMode="Large" TemplateAlias="o1" Type="OneRow" />
+              <OverflowSection DisplayMode="Small" TemplateAlias="o2" Type="ThreeRow" />
+            </Layout>
+            <Layout Title="MediumLarge" LayoutTitle="MediumLarge">
+              <OverflowSection DisplayMode="Medium" TemplateAlias="o1" Type="ThreeRow" />
+              <OverflowSection DisplayMode="Large" TemplateAlias="o2" Type="OneRow" />
+            </Layout>
+            <Layout Title="MediumMedium" LayoutTitle="MediumMedium">
+              <OverflowSection DisplayMode="Medium" TemplateAlias="o1" Type="ThreeRow" />
+              <OverflowSection DisplayMode="Medium" TemplateAlias="o2" Type="ThreeRow" />
+            </Layout>
+            <Layout Title="MediumSmall" LayoutTitle="MediumSmall">
+              <OverflowSection DisplayMode="Medium" TemplateAlias="o1" Type="ThreeRow" />
+              <OverflowSection DisplayMode="Small" TemplateAlias="o2" Type="ThreeRow" />
+            </Layout>
+            <Layout Title="SmallLarge" LayoutTitle="SmallLarge">
+              <OverflowSection DisplayMode="Small" TemplateAlias="o1" Type="ThreeRow" />
+              <OverflowSection DisplayMode="Large" TemplateAlias="o2" Type="OneRow" />
+            </Layout>
+            <Layout Title="SmallMedium" LayoutTitle="SmallMedium">
+              <OverflowSection DisplayMode="Small" TemplateAlias="o1" Type="ThreeRow" />
+              <OverflowSection DisplayMode="Medium" TemplateAlias="o2" Type="ThreeRow" />
+            </Layout>
+            <Layout Title="SmallSmall" LayoutTitle="SmallSmall">
+              <OverflowSection DisplayMode="Small" TemplateAlias="o1" Type="ThreeRow" />
+              <OverflowSection DisplayMode="Small" TemplateAlias="o2" Type="ThreeRow" />
+            </Layout>
+          </GroupTemplate>
+        </CommandUIDefinition>
+      </CommandUIDefinitions>
+      <CommandUIHandlers>
+        <CommandUIHandler Command="My Group.Command" CommandAction="javascript:return true;" />
+        <CommandUIHandler Command="My Button.Command" CommandAction="javascript:alert('My Action');" />
+        <CommandUIHandler Command="My History.Command" CommandAction="javascript:
+                          
+                          
+                          var _ctx = SP.ClientContext.get_current();
+                          
+                          var web = _ctx.get_web();
+                          var currentListGUID = ctx.ListTitle;
+                          //web.get_lists().getById(SP.ListOperation.Selection.getSelectedList());
+                          
+                          console.log(currentListGUID);                         
+                         
+                          
+                          var items = SP.ListOperation.Selection.getSelectedItems(ctx);
+
+                          var mySeletedItems = '';
+
+                           var i;
+
+                           for (i in items)
+                           {
+                                mySeletedItems += '|' + items[i].id;
+                                console.log(items[i]);
+                           }
+                          
+                          var serverName = _spPageContextInfo.siteAbsoluteUrl;
+                          console.log('ServerName : ' + serverName);
+                          
+                          
+                          
+                          window.location.href = serverName + '/_layouts/15/ESignOn/ReviewerList.aspx?items=' + mySeletedItems + '&amp;list=' + currentListGUID;
+                          
+                            " />
+      </CommandUIHandlers>
+    </CommandUIExtension>
+    
+  </CustomAction>
+</Elements>

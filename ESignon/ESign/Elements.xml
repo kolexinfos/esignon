@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <CustomAction Description="Custom Action" Title="Custom Action" Id="{HTEDCT16-YIMF-4EAE-TSBE-UGB95BDE$}" Location="CommandUI.Ribbon.DisplayForm" RegistrationId="100" RegistrationType="List" Sequence="0" Rights="ViewListItems" xmlns="http://schemas.microsoft.com/sharepoint/">
+    <CommandUIExtension xmlns="http://schemas.microsoft.com/sharepoint/">
+      <CommandUIDefinitions>
+        <CommandUIDefinition Location="Ribbon.ListForm.Display.Manage.Controls._children">
+          <Button Id="{GTEDCT16-YIMF-4EAE-TSBE-EHYO95BDUT}" Command="{FTEDCT16-YIMF-4EAE-TSBE-YDS95BDE3}"
+                  Image32by32="~site/_layouts/Images/CAction.png" Image16by16="~site/_layouts/Images/ CAction.png"
+                  Sequence="0" LabelText="Custom Action" Description="Custom Action”" TemplateAlias=" o1 " />
+        </CommandUIDefinition>
+        </CommandUIDefinitions>
+      
+      <CommandUIHandlers>
+        <CommandUIHandler Command="{FTEDCT16-YIMF-4EAE-TSBE-YDS95BDE3}" CommandAction="javascript: alert(''Hi'');" />
+      </CommandUIHandlers>
+    </CommandUIExtension>
+  </CustomAction>
+</Elements>

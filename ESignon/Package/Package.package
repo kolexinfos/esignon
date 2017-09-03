@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="703e1c7b-bc97-4fe1-bc2b-c3eab5d8ce10" solutionId="703e1c7b-bc97-4fe1-bc2b-c3eab5d8ce10" resetWebServer="false" sharePointProductVersion="15.0" name="ESignon" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <assemblies>
+    <customAssembly location="OpenXmlPowerTools.dll" deploymentTarget="GlobalAssemblyCache" sourcePath="..\packages\OpenXmlPowerTools.4.5.3.2\lib\net45\OpenXmlPowerTools.dll" />
+  </assemblies>
+  <features>
+    <featureReference itemId="47a2607f-8626-4a07-ba7d-2cd0babe6bfc" />
+    <featureReference itemId="aa3b71de-d6fc-4cb3-8789-24182184770d" />
+  </features>
+  <projectItems>
+    <projectItemReference itemId="d4192216-a73d-4e8a-828b-af21709d2136" />
+  </projectItems>
+</package>
